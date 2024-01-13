@@ -803,4 +803,33 @@ SELECT
 	AND TERC.Numero_Identificacion =  isnull(@par_Identificacion  ,TERC.Numero_Identificacion)                      
 END
 GO
-----------------------------------------------------------
+----------------------------------------------------------.
+PRINT 'TRG_CREAR_USARIO_GESCAR_IA'
+GO
+DROP TRIGGER TRG_CREAR_USARIO_GESCAR_IA
+GO
+CREATE TRIGGER TRG_CREAR_USARIO_GESCAR_IA
+ON Tercero_Conductores
+AFTER INSERT
+AS
+BEGIN
+    -- Selecciona los datos de la tabla Terceros correspondientes a la fila insertada
+    SELECT Codigo, Numero_Identificacion, Nombre, Apellido1, Apellido2, Emails, CATA_LISE_Codigo
+    INTO #Temp
+    FROM Terceros T
+    WHERE Codigo IN (SELECT TERC_Codigo FROM inserted);
+
+	DECLARE @id NUMERIC = 0;
+	SELECT @id = tercero_conductor_gestrans from users Where tercero_conductor_gestrans = (SELECT TERC_Codigo FROM inserted);
+
+	IF @id = 0 OR @id IS NULL
+	BEGIN
+		-- Inserta los datos seleccionados en la tabla users
+		INSERT INTO users (name, usuario, email, password, habilitado, linea_servicio, is_admin, tercero_conductor_gestrans)
+		SELECT Nombre, Numero_Identificacion, Emails, HASHBYTES('MD5', Numero_Identificacion), 1, 1, 0, Codigo
+		FROM #Temp;
+
+		-- Elimina la tabla temporal
+		DROP TABLE #Temp;
+	END
+END
