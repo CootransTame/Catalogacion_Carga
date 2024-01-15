@@ -7,7 +7,7 @@ INSERT INTO Menu_Aplicaciones VALUES (1,450322,45,'Sustancias Peligrosas',	4503,
 INSERT INTO Menu_Aplicaciones VALUES (1,12002,120,'Listados',120,30,1,	1,	1,	1,	1,	1,	0,	0,	0,	0,	'#!ConsultarListadosMantenimiento',	'#',NULL)
 INSERT INTO Menu_Aplicaciones VALUES (1,1200201,120,'Actividades pendientes por cerrar',	12002,	10,	0,	1,	1,	1,	1,	1,	1,	0,	1,	0,	'#!lstActividadesPendCerrar',	'#',	NULL)
 INSERT INTO Menu_Aplicaciones VALUES (1,1200202,120,'Hallazgos pendientes por cerrar',	12002,	20,	0,	1,	1,	1,	1,	1,	1,	0,	1,	0,	'#!lstHallazgosPendCerrar',	'#',	NULL)
-INSERT INTO Menu_Aplicaciones VALUES (1, 460306, 46, 'Res 6333 P 1 1 Ingresos envíos mensajería expresa', 4603, 60, 0, 1, 1, 1, 1, 1, 1, 0, 1, 0, ('#!lstRes6333P11'), '#', NULL)
+INSERT INTO Menu_Aplicaciones VALUES (1, 460306, 46, 'MinTIC  6333 P11 Ingresos x envíos', 4603, 60, 0, 1, 1, 1, 1, 1, 1, 0, 1, 0, ('#!lstRes6333P11'), '#', NULL)
 
 --Portal
 INSERT INTO Menu_Aplicaciones VALUES (1, 26003, 260, 'Listados', 260, 30, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0, ('#!ConsultarListadoGuiasPaqueteriaPortal'), '#', NULL)
